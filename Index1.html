@@ -1,80 +1,121 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://kit.fontawesome.com/4f69e8bc60.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script
+      src="https://kit.fontawesome.com/4f69e8bc60.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="mijavascript.js" defer></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IArs4c6QAAB/dJREFUeF7tnXdrVU0QxieW2GMXC5ZYEsVEY0VQUEHwu/oNBEHUxBaJDTVFjb0r9q55efYlEnPvOTuz95xzZfdZyF+ZbTO/s2dmds/elmPHjo0JS7IaaCEAydreTZwApG1/ApC4/QkAAaATmDQD9AGSNj+dwMTNTwAIAPMAaTNAHyBt+zMMTNz+BIAAMA+QNAP0AZI2P8PAxM1PAAgA8wBpM0AfIG37MwxM3P4EgAAwD5A0A/QBkjY/w8DEzU8ACADzAGkzQB8gbfszDEzc/gSAADAPkDQD9AGSNj/DwMTNTwAIAPMAaTNAHyBt+zMMTNz+BOBfBWDNmjWycuVKWbBggcycOVOmTp0qU6ZM+Wu4v3//ll+/fsnXr1/lw4cP8uzZM7l//778/PlTPa3MV8Du3bulvb1d3VCZgl++fJGLFy/Kixcv6nZT9Vih4IGBAafsIsuqVatkw4YNsnjxYpk2bVpQ0wDi1atXcufOHXn8+LG3DQLgVVGtQNEALF++XLq6utzT3tLSEjCi2ipjY2Pugblx44a8fv06s00CEKDuogCYNWuWbN++3S31WOLLKHg93Lx5060I9QoBCNB6EQDA6DD+3LlzA0Zgq4LXwsjIiFy/fr2mIgGw6dJJNwoAfKvu7m6ZMWNGQO/2Kngd3L171/ktkwsBsOuzIQDg5MH406dPD+g5rMrnz5/l/PnzdX0BAhCg09AVAM4eIha8+6sqeU8/xkAAAiwRAkBbW5vs27dP5s+fH9BjeJVPnz7JhQsXMiMBAhCg2xAAYPzVq1ebe4MD9/btW3ny5Im8efPmTy4EeQKsKEuXLnV/AGxyCImnH97/5cuX7WGgeaQicvToUTcQXxkdHZVLly75xNT/1yaCiu5XO8BNmza5ON+S3NHG8eNjgGO5ZcsWmTNnzp9h+Z7+3FeAdnIT5QhArdZg9EOHDsnChQvVKsUKMzQ05OJ3S0EGcefOnS6hpHn6CYBFu4GyW7dulc2bN9fk8bOa+/Hjh9y6dcsBEFLGfQ0klvr6+uT9+/e5zRS6HcwV4G9d4+k/fPiweyI1RfvU+trCSoAcA/wGXyEAPg018H/E/Nu2bVO/+7GJc+bMGdNuXgPDc1UJQKMazKm/f/9+l+fXFCz9165dcxm7KgsBKEnbixYtcnH/RK88rys8/SdPnixpNNnNEoCSVL5x40aX8tWEfoj14fEPDg6WNBoC4DRQZR5g165dsn79epVB83L1qgYaEOIK0IDy8qoePHhQli1bpmodBzdOnTqlki1aiAAUrVERt+wfOXJE5s2b5229qNDP21GGAAEI1VxOPTz5e/fuVe36IeuHgxq3b98uYST+JgmAX0dmibVr17qUrMYB/Pbtm9sX0SRtzANRVEgKAIU+6org+DU8dByw1JTOzk5BClhzzg8bNjisgZ2+ZhQCoNC6FQBL/h+5+uPHjytGUY4IAVDolQAolASRf30zSDmNGjErAJYcQDNDQEyUK4CCCisA2gMq6JoAKAzgE7Eo3NdWvf8TAKXW+Ar4X1E7duxw3/hpPvOiE6iEK09MuwJg0wWZN2vBCjA8POxO6mgKowCPlorelNECUHS/WdO0AIDPuk+cOFHpIZCJ407KCawKAMtWsO/Td82K04gMAWhEexl1LalgnATCN3sPHjwoYST+JgmAX0dmCctmEPwSpJhDTwGbBzepAgFoVIN16nM7OHEnENO3HAh5/vy5nD59ugQU/U1yBfDrKEhiz549sm7dOlXdjx8/Sm9vr7voqepCAErSuGVLGIdCcCQ86xqXkobomiUAJWnX4ghiCIgC8Bl31YUAlKhxfBa2ZMkSVQ/NOhlMAFTmCRPCdwEdHR2qD0ORbsa5wKtXr4Z1FliLAAQqTlPN+hrAKtDf3595IaamT6sMAbBqzCh/4MABWbFihboWQsKzZ89WtjdAANSmCRPEnb/YHm5tbVU1gN1KOIS4Gje04I4A+B6aD00JQKiWDfUsSSE0i/QwNq7y7vbJ6n78AkoAhz2Ghw8f5o6UABgMGSqKy6HwnYB2FUA/WAnwOsA3A9gx9BVcGIWbSHA5xPit4k+fPnUJprySFAA+JVr/bznNgzMLyAxqTglNHAeSRDg3iJu/Hz169Mc3gF+BT89gcHyKPnv27Jrha+4cIABWq0+QtwAAY+G+AO11MQ0M66+qvltHCEADmrYAgG6acVOo7+4BAlAhAOiq6oui0ee7d+/k3LlzdTebCEDFADQDgrwsIwFoAgDossrfC0B/WREBAWgSAOgWCZuenh53k4g1OtAOG5HAvXv35MqVK3WrEACtJuvIWZ3ArK7gFyCGL/LXQ7R3DROAfwCA8SFg5xAwIGQMXRG+f//u8gbYWXz58qV3doUC4O2NAioN4NWAPQRcA49VAb8uMvmyCTzhCPGQKMIuIq6UR7IIvx1oKQTAoq0IZQlAhEa1TIkAWLQVoSwBiNColikRAIu2IpQlABEa1TIlAmDRVoSyBCBCo1qmRAAs2opQlgBEaFTLlAiARVsRyhKACI1qmRIBsGgrQlkCEKFRLVMiABZtRShLACI0qmVKBMCirQhlCUCERrVMiQBYtBWhLAGI0KiWKREAi7YilCUAERrVMiUCYNFWhLIEIEKjWqZEACzailCWAERoVMuUCIBFWxHKEoAIjWqZEgGwaCtCWQIQoVEtUyIAFm1FKEsAIjSqZUoEwKKtCGUJQIRGtUyJAFi0FaHsf65stlut6BcUAAAAAElFTkSuQmCC">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="css/style1.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link
+      data-vue-tag="ssr"
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="data:image/png;base64,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"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="css/style1.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <title>CV-Elaine García</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div id="logo">
-            <img src="logo.png" alt="Logo de la Empresa">
-        </div>
-        <h1> Curriculum Vitae<br> Elaine García </h1>   
-        </div>
+      <div id="logo">
+        <img src="logo.png" alt="Logo de la Empresa" />
+      </div>
+      <h1>
+        Curriculum Vitae<br />
+        Elaine García
+      </h1>
     </header>
-    
-        <div class="general"></div>
-        <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" class="foto_elaine" alt="foto de Elaine García">
-        <div id="informacion">
-            <h2><i class="fa-solid fa-user"></i> <br>Información general</h2>
-            <P><i class="fa-solid fa-cake-candles"></i><b>Fecha de Nacimiento</b><br> 
-                2/11/92, Colón, Entre Rios<br>
-                Nacionalidad: Argentina <br>
-            
-            <i class="fa-solid fa-phone"></i><b>Contacto</b><br>
-            (891) 277-5846<br>
-            <i class="fa-solid fa-envelope"></i><b>E-mail</b> <br> 
-            <e-mail>elaine.garcia@example.com</e-mail><br>
-            </p>
-            <h2><i class="fa-solid fa-graduation-cap"></i> <br>
-                Estudios</h2><br>
-            <p>
-            -<b>Secundario Completo</b><br>
-            -Tecnicatura en <b >Comunity Manager</b> (UADER)<br>
-            -<b> Licenciatura en Relaciones Públicas</b> (UBA).
-            </p>
-        </div>
-        
-        <div id="experiencia"><h2><i class="fa-solid fa-calendar-days"></i> <br> Experiencias</h2>
-            <ul>
-                <li>Trabajo de camarera en Mc'Donals (2012)</li><br>
-                <li>Emprendimiento personal "Panificación Entre Ríos" (2017-2018)</li><br>
-                <li><b> Comunnity Manager</b> para "González S.A."(2020-2022)</li><br>
-            </ul>
-        </div>
-       <div id="habilidades_div">
-        <h2><i class="fa-solid fa-handshake"></i><br>
-             Habilidades</h2>
-             <div>
-                <ul>
-                    <li>Idiomas: Portugués (Nivel Medio), Inglés Americano (Avanzado)</li>
-                    <li><b> Manejo de equipo de trabajo.</b></li>
-                </ul>
-             </div>
-            <button id="boton.habilidades" onclick="mostrar_habilidades();"><b> Mostrar Más</b></button>
-            <div id="habilidades">    
-                <ul>
-                    <li>Comodidad al momento de trabajar en equipo.</li><br>
-                    <li>Manejo de redes sociales <b>(Comunity Manager con certificación)</b></li><br>
-                    <li>Gran capacidad para entablar conversación, venta directa al usuario.<br>    
-                </ul>
-                <button id="boton.habilidades.ocultar" onclick="ocultar_habilidades();"><b> Mostrar Menos</b></button>
-            </div>
-        </div>
 
+    <div class="general"></div>
+    <img
+      src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+      class="foto_elaine"
+      alt="foto de Elaine García"
+    />
+    <div id="informacion">
+      <h2><i class="fa-solid fa-user"></i> <br />Información general</h2>
+      <p>
+        <i class="fa-solid fa-cake-candles"></i><b>Fecha de Nacimiento</b><br />
+        2/11/92, Colón, Entre Rios<br />
+        Nacionalidad: Argentina <br />s
+
+        <i class="fa-solid fa-phone"></i><b>Contacto</b><br />
+        (891) 277-5846<br />
+        <i class="fa-solid fa-envelope"></i><b>E-mail</b> <br />
+        <e-mail>elaine.garcia@example.com</e-mail><br />
+      </p>
+      <h2>
+        <i class="fa-solid fa-graduation-cap"></i> <br />
+        Estudios
+      </h2>
+      <br />
+      <p>
+        -<b>Secundario Completo</b><br />
+        -Tecnicatura en <b>Comunity Manager</b> (UADER)<br />
+        -<b> Licenciatura en Relaciones Públicas</b> (UBA).
+      </p>
     </div>
-</body>
+
+    <div id="experiencia">
+      <h2>
+        <i class="fa-solid fa-calendar-days"></i> <br />
+        Experiencias
+      </h2>
+      <ul>
+        <li>Trabajo de camarera en Mc'Donals (2012)</li>
+        <br />
+        <li>Emprendimiento personal "Panificación Entre Ríos" (2017-2018)</li>
+        <br />
+        <li><b> Comunnity Manager</b> para "González S.A."(2020-2022)</li>
+        <br />
+      </ul>
+    </div>
+    <div id="habilidades_div">
+      <h2>
+        <i class="fa-solid fa-handshake"></i><br />
+        Habilidades
+      </h2>
+      <div>
+        <ul>
+          <li>Idiomas: Portugués (Nivel Medio), Inglés Americano (Avanzado)</li>
+          <li><b> Manejo de equipo de trabajo.</b></li>
+        </ul>
+      </div>
+      <button id="boton.habilidades" onclick="mostrar_habilidades();">
+        <b> Mostrar Más</b>
+      </button>
+      <div id="habilidades">
+        <ul>
+          <li>Comodidad al momento de trabajar en equipo.</li>
+          <br />
+          <li>
+            Manejo de redes sociales <b>(Comunity Manager con certificación)</b>
+          </li>
+          <br />
+          <li>
+            Gran capacidad para entablar conversación, venta directa al
+            usuario.<br />
+          </li>
+        </ul>
+
+        <button id="boton.habilidades.ocultar" onclick="ocultar_habilidades();">
+          <b> Mostrar Menos</b>
+        </button>
+      </div>
+    </div>
+  </body>
 </html>
